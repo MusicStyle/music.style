@@ -1,7 +1,8 @@
-* {
+* { /*Reset básico*/
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: montsserat, sans-serif;
 }
 :root {
     /*Paleta de cores roxa*/
@@ -13,7 +14,21 @@
     --roxo6: #9d4edd;
     --roxo7: #c77dff;
     --roxo8: #e0aaff;
+
+    /*Outras cores*/
+    --divBg: rgba(0, 0, 0, 0.7);
+
+    /*Cor da fonte*/
+    --fontColor1: #f7f7f7;
 }
 body {
-    background-image: linear-gradient(30deg, var(--roxo4), var(--roxo6));
+    background-color: linear-gradient(30deg, var(--roxo4), var(--roxo6));
+    color: var(--fontColor1);
+    margin: auto;
+}
+div {
+    height: max-content;
+    width: max-content;
+    padding: 25px;
+    background-color: var(--divBg);
 }
