@@ -31,4 +31,5 @@ div {
     width: max-content;
     padding: 25px;
     background-color: var(--divBg);
+    justify-content: center;
 }
