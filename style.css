@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    /*Paleta de cores roxa*/
+    --roxo1: #10002b;
+    --roxo2: #240046;
+    --roxo3: #3c096c;
+    --roxo4: #5a189a;
+    --roxo5: #7b2cbf;
+    --roxo6: #9d4edd;
+    --roxo7: #c77dff;
+    --roxo8: #e0aaff;
+}
+body {
+    background-image: linear-gradient(30deg, var(--roxo4), var(--roxo6));
+}
