@@ -23,38 +23,20 @@
 }
 body {
     background-image: url(https://img.freepik.com/vetores-gratis/fundo-suave-em-gradiente_23-2148967580.jpg?semt=ais_hybrid&w=740&q=80);
+    width: 100vw;
     color: var(--fontColor1);
-    text-align: center;
-}
-.loginArea, .registerArea {
-    height: max-content;
-    width: max-content;
-    padding: 25px;
-    background-color: var(--divBg);
-    display: flex;
-    flex-direction: column;
-}
-input {
-    margin: 10px;
-    width: 120px;
-    height: 28px;
-    border-radius: 2px;
-    border-style: solid;
-    border-width: 2px;
-    transition: all 0.5s ease;
+    align-items: center;
+    background-repeat: no-repeat;
 }
 button {
     margin: 10px;
     width: 120px;
-    height: 28px;
+    height: 35px;
     border-radius: 2px;
+    text-decoration: none;
     background-color: var(--roxo5);
+    cursor: pointer;
     transition: all 0.5s ease;
-}
-input:hover {
-    border-width: 3px;
-    border-bottom-width: 4px;
-    border-bottom-color: var(--roxo5);
 }
 button:hover {
     background: linear-gradient(30deg, var(--roxo5), var(--roxo6));
