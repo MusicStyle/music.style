@@ -23,6 +23,7 @@
 }
 body {
     background-image: url(https://img.freepik.com/vetores-gratis/fundo-suave-em-gradiente_23-2148967580.jpg?semt=ais_hybrid&w=740&q=80);
+    width: 100vw;
     color: var(--fontColor1);
     align-items: center;
     background-repeat: no-repeat;
@@ -38,7 +39,7 @@ body {
 input {
     margin: 10px;
     width: 120px;
-    height: 28px;
+    height: 35px;
     border-radius: 2px;
     border-style: solid;
     border-width: 2px;
@@ -47,7 +48,7 @@ input {
 button {
     margin: 10px;
     width: 120px;
-    height: 28px;
+    height: 35px;
     border-radius: 2px;
     text-decoration: none;
     background-color: var(--roxo5);
