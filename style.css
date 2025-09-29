@@ -34,6 +34,7 @@ body {
     padding: 25px;
     background-color: var(--divBg);
     display: flex;
+    flex-direction: column;
     border-radius: 7px;
 }
 input {
