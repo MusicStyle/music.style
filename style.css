@@ -24,7 +24,12 @@
 body {
     background-image: url(https://img.freepik.com/vetores-gratis/fundo-suave-em-gradiente_23-2148967580.jpg?semt=ais_hybrid&w=740&q=80);
     color: var(--fontColor1);
-    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    display: flex;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .loginArea, .registerArea {
     height: max-content;
@@ -55,7 +60,9 @@ input:hover {
     border-width: 3px;
     border-bottom-width: 4px;
     border-bottom-color: var(--roxo5);
+    cursor: pointer;
 }
 button:hover {
     background: linear-gradient(30deg, var(--roxo5), var(--roxo6));
+    cursor: pointer;
 }
