@@ -31,6 +31,10 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 }
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
 .loginArea, .registerArea {
     height: max-content;
     width: max-content;
@@ -38,6 +42,7 @@ body {
     background-color: var(--divBg);
     display: flex;
     flex-direction: column;
+    margin: 2rem;
 }
 main {
     display: flex;
