@@ -1,0 +1,45 @@
+* { /*Reset básico*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: montsserat, sans-serif;
+}
+:root {
+    /*Paleta de cores roxa*/
+    --roxo1: #10002b;
+    --roxo2: #240046;
+    --roxo3: #3c096c;
+    --roxo4: #5a189a;
+    --roxo5: #7b2cbf;
+    --roxo6: #9d4edd;
+    --roxo7: #c77dff;
+    --roxo8: #e0aaff;
+
+    /*Outras cores*/
+    --divBg: rgba(0, 0, 0, 0.7);
+
+    /*Cor da fonte*/
+    --fontColor1: #f7f7f7;
+}
+body {
+    background-color: #ffffff;
+    color: var(--fontColor1);
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    display: flex;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: linear-gradient(30deg, var(--roxo4), var(--roxo5));
+    color: #ffffff;
+}
+main {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
