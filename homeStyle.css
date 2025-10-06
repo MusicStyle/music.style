@@ -22,7 +22,7 @@
     --fontColor1: #f7f7f7;
 }
 body {
-    background-color: #ffffff;
+    background-image: url("images/background home.png");
     color: var(--fontColor1);
     justify-content: center;
     align-items: center;
