@@ -64,7 +64,7 @@ app.post('/login', async (req, res) => {
             return res.status(401).json({ mensagem: "Credenciais inválidas." });
         }
 
-        res.json({ mensagem: "Login bem-sucedido!" });
+        res.json({ mensagem: "Login bem-sucedido!", usuario: { nome: usuario.nome, email: usuario.email } });
 
     } catch (error) {
         res.status(500).json({ erro: error.message });
@@ -73,5 +73,5 @@ app.post('/login', async (req, res) => {
 
 // Iniciar o servidor
 app.listen(PORT, () => {
-    console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
