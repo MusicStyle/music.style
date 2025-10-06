@@ -22,7 +22,7 @@
     --fontColor1: #f7f7f7;
 }
 body {
-    background-image: url(https://img.freepik.com/vetores-gratis/fundo-suave-em-gradiente_23-2148967580.jpg?semt=ais_hybrid&w=740&q=80);
+    background-image: url("images/background login.png");
     color: var(--fontColor1);
     justify-content: center;
     align-items: center;
@@ -30,6 +30,7 @@ body {
     display: flex;
     background-size: cover;
     background-repeat: no-repeat;
+    text-align: center;
 }
 h1 {
     font-size: 2.5rem;
@@ -37,18 +38,20 @@ h1 {
 }
 .loginArea, .registerArea {
     height: max-content;
-    width: max-content;
+    width: 300px;
     padding: 25px;
     background-color: var(--divBg);
     display: flex;
     flex-direction: column;
-    margin: 2rem;
+    margin: 0;
+    align-items: center;
 }
 main {
     display: flex;
     justify-content: center;
     gap: 40px;
     flex-wrap: wrap;
+    align-items: center;
 }
 input {
     margin: 10px;
@@ -67,7 +70,6 @@ button {
 }
 input:hover {
     border-width: 3px;
-    border-bottom-width: 4px;
     border-bottom-color: var(--roxo5);
     cursor: pointer;
 }
