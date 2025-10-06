@@ -1,4 +1,4 @@
-let usuario = {
+const usuario = {
     nome: "",
     email: "",
     senha: ""
@@ -18,6 +18,7 @@ document.getElementById("loginBtn").addEventListener("click", function () {
     console.log(usuario);
     window.location.href = "home.html";
 });
+const usuarioLogin = JSON.parse(localStorage.getItem("usuario"));
 if (usuario.nome && usuario.senha) {
     window.location.href = "home.html";
 } else {
