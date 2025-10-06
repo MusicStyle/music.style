@@ -63,7 +63,7 @@ main {
 }
 input {
     margin: 10px;
-    width: 300px;
+    width: 250px;
     height: 28px;
     border: none;
     border-bottom: 3px solid transparent;
@@ -75,7 +75,7 @@ input {
 }
 button {
     margin: 10px;
-    width: 120px;
+    width: 250px;
     height: 28px;
     border-radius: 2px;
     background-color: var(--roxo5);
