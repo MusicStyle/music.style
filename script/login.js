@@ -8,64 +8,41 @@ function pegarUsuario() {
     const userStr = localStorage.getItem("usuario");
     return userStr ? JSON.parse(userStr) : null;
 }
+const bcrypt = require('bcryptjs');
 
-// Evento de login
-document.getElementById("loginBtn").addEventListener("click", async function () {
-    const nome = document.getElementById("loginName").value.trim();
-    const senha = document.getElementById("loginPassword").value.trim();
-
-    if (!nome || !senha) {
-        alert("Preencha todos os campos!");
-        return;
-    }
-
+// Rota de cadastro
+app.post('/register', async (req, res) => {
+    const { nome, email, senha } = req.body;
     try {
-        const resposta = await fetch("http://localhost:3000/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ nome, senha })
-        });
+        // Verifica se o usuário já existe
+        const existente = await Usuario.findOne({ email });
+        if (existente) return res.status(400).json({ mensagem: "Usuário já existe." });
 
-        const dados = await resposta.json();
+        // Criptografa a senha antes de salvar
+        const senhaCriptografada = await bcrypt.hash(senha, 10);
 
-        if (resposta.ok) {
-            alert(dados.mensagem);
-            window.location.href = "home.html";
-        } else {
-            alert(dados.mensagem);
-        }
-    } catch (erro) {
-        alert("Erro ao fazer login: " + erro.message);
+        const novoUsuario = new Usuario({ nome, email, senha: senhaCriptografada });
+        await novoUsuario.save();
+        res.json({ mensagem: "Usuário registrado com sucesso!" });
+    } catch (error) {
+        res.status(500).json({ erro: error.message });
     }
 });
 
-// Evento de cadastro
-document.getElementById("registerBtn").addEventListener("click", async function () {
-    const nome = document.getElementById("registerName").value.trim();
-    const email = document.getElementById("registerEmail").value.trim();
-    const senha = document.getElementById("registerPassword").value.trim();
-
-    if (!nome || !email || !senha) {
-        alert("Preencha todos os campos!");
-        return;
-    }
-
+// Rota de login
+app.post('/login', async (req, res) => {
+    const { nome, senha } = req.body;
     try {
-        const resposta = await fetch("http://localhost:3000/register", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ nome, email, senha })
-        });
+        // Busca o usuário no banco
+        const usuario = await Usuario.findOne({ nome });
+        if (!usuario) return res.status(401).json({ mensagem: "Credenciais inválidas." });
 
-        const dados = await resposta.json();
+        // Compara a senha fornecida com a senha criptografada no banco
+        const senhaValida = await bcrypt.compare(senha, usuario.senha);
+        if (!senhaValida) return res.status(401).json({ mensagem: "Credenciais inválidas." });
 
-        if (resposta.ok) {
-            alert(dados.mensagem);
-            window.location.href = "home.html";
-        } else {
-            alert(dados.mensagem);
-        }
-    } catch (erro) {
-        alert("Erro ao se registrar: " + erro.message);
+        res.json({ mensagem: "Login bem-sucedido!" });
+    } catch (error) {
+        res.status(500).json({ erro: error.message });
     }
 });
