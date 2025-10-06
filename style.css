@@ -63,11 +63,15 @@ main {
 }
 input {
     margin: 10px;
-    width: 120px;
+    width: 300px;
     height: 28px;
+    border: none;
+    border-bottom: 3px solid transparent;
     border-radius: 2px;
-    border-style: solid;
-    border-width: 2px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    background-color: #fff;
+    padding: 0 5px;
 }
 button {
     margin: 10px;
@@ -75,9 +79,11 @@ button {
     height: 28px;
     border-radius: 2px;
     background-color: var(--roxo5);
+    border: none;
+    color: var(--fontColor1);
+    transition: background 0.3s ease;
 }
 input:hover {
-    border-width: 3px;
     border-bottom-color: var(--roxo5);
     cursor: pointer;
 }
