@@ -10,44 +10,62 @@ function pegarUsuario() {
 }
 
 // Evento de login
-document.getElementById("loginBtn").addEventListener("click", function () {
+document.getElementById("loginBtn").addEventListener("click", async function () {
     const nome = document.getElementById("loginName").value.trim();
     const senha = document.getElementById("loginPassword").value.trim();
 
     if (!nome || !senha) {
-        alert("Por favor, preencha todos os campos do login!");
+        alert("Preencha todos os campos!");
         return;
     }
 
-    const usuarioSalvo = pegarUsuario();
+    try {
+        const resposta = await fetch("http://localhost:3000/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nome, senha })
+        });
 
-    if (!usuarioSalvo) {
-        alert("Nenhum usuário cadastrado. Por favor, registre-se primeiro.");
-        return;
-    }
+        const dados = await resposta.json();
 
-    if (usuarioSalvo.nome === nome && usuarioSalvo.senha === senha) {
-        alert("Login realizado com sucesso!");
-        window.location.href = "home.html";
-    } else {
-        alert("Nome ou senha incorretos.");
+        if (resposta.ok) {
+            alert(dados.mensagem);
+            window.location.href = "home.html";
+        } else {
+            alert(dados.mensagem);
+        }
+    } catch (erro) {
+        alert("Erro ao fazer login: " + erro.message);
     }
 });
 
-// Evento de registro
-document.getElementById("registerBtn").addEventListener("click", function () {
+// Evento de cadastro
+document.getElementById("registerBtn").addEventListener("click", async function () {
     const nome = document.getElementById("registerName").value.trim();
     const email = document.getElementById("registerEmail").value.trim();
     const senha = document.getElementById("registerPassword").value.trim();
 
     if (!nome || !email || !senha) {
-        alert("Por favor, preencha todos os campos do cadastro!");
+        alert("Preencha todos os campos!");
         return;
     }
 
-    const usuario = { nome, email, senha };
-    salvarUsuario(usuario);
+    try {
+        const resposta = await fetch("http://localhost:3000/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nome, email, senha })
+        });
 
-    alert("Cadastro realizado com sucesso!");
-    window.location.href = "home.html";
+        const dados = await resposta.json();
+
+        if (resposta.ok) {
+            alert(dados.mensagem);
+            window.location.href = "home.html";
+        } else {
+            alert(dados.mensagem);
+        }
+    } catch (erro) {
+        alert("Erro ao se registrar: " + erro.message);
+    }
 });
