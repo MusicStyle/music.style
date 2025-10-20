@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MusicStyle | Seu estilo, sua música</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body class="text-white" style="min-height: 100vh; background: linear-gradient(30deg, purple, violet); background-repeat: no-repeat; background-size: cover; background-position: center;">
+    <header class="d-flex justify-content-center text-center">
+        <h1 class="pb-5 pt-2">Bem-vindo ao MusicStyle</h1>
+    </header>
+    <!-- Layout desktop -->
+    <main class="d-none d-md-flex justify-content-center gap-5">
+        <div class="px-4 py-3" style="max-width: 400px; background-color: rgba(0,0,0,0.5); border-radius: 15px;">
+            <label for="email">Email:</label>
+            <input type="email" id="email" class="form-control mb-3" />
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" class="form-control mb-3" />
+            <button class="btn btn-primary w-100" style="background-color: purple; border-color: blueviolet;">Entrar</button>
+        </div>
+        <div class="px-4 py-3" style="max-width: 400px; background-color: rgba(0,0,0,0.5); border-radius: 15px;">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" class="form-control mb-3" />
+            <label for="emailCadastro">Email:</label>
+            <input type="email" id="emailCadastro" class="form-control mb-3" />
+            <label for="senhaCadastro">Senha:</label>
+            <input type="password" id="senhaCadastro" class="form-control mb-3" />
+            <button class="btn btn-primary w-100" style="background-color: purple; border-color: blueviolet;">Cadastrar</button>
+        </div>
+    </main>
+    <!-- Layout mobile -->
+    <main class="d-block d-md-none px-3" style="color: white;">
+        <ul class="nav nav-tabs mb-3" id="formTabs" role="tablist">
+            <li class="nav-item" role="presentation"><button class="nav-link active" style="color: black;" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">Login</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" style="color: white;" id="cadastro-tab" data-bs-toggle="tab" data-bs-target="#cadastro" type="button" role="tab" aria-controls="cadastro" aria-selected="false">Cadastro</button></li>
+        </ul>
+        <div class="tab-content" id="formTabsContent" style="background-color: rgba(0,0,0,0.5); border-radius: 15px; padding: 15px;">
+        <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+            <label for="emailMobile">Email:</label>
+            <input type="email" id="emailMobile" class="form-control mb-3" />
+            <label for="senhaMobile">Senha:</label>
+            <input type="password" id="senhaMobile" class="form-control mb-3" />
+            <button class="btn btn-primary w-100" style="background-color: purple; border-color: blueviolet;">Entrar</button>
+        </div>
+        <div class="tab-pane fade" id="cadastro" role="tabpanel" aria-labelledby="cadastro-tab">
+            <label for="nomeMobile">Nome:</label>
+            <input type="text" id="nomeMobile" class="form-control mb-3" />
+            <label for="emailCadastroMobile">Email:</label>
+            <input type="email" id="emailCadastroMobile" class="form-control mb-3" />
+            <label for="senhaCadastroMobile">Senha:</label>
+            <input type="password" id="senhaCadastroMobile" class="form-control mb-3" />
+            <button class="btn btn-primary w-100" style="background-color: purple; border-color: blueviolet;">Cadastrar</button>
+        </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.nav-link');
+
+            tabs.forEach(tab => {
+            tab.addEventListener('shown.bs.tab', function () {
+                tabs.forEach(t => t.style.color = 'white'); // define branco pra todos
+                this.style.color = 'black'; // define preto pro botão ativo
+            });
+            });
+
+            // define a cor correta no carregamento inicial
+            const activeTab = document.querySelector('.nav-link.active');
+            if (activeTab) {
+            activeTab.style.color = 'black';
+            }
+        });
+</script>
+</body>
+</html>
