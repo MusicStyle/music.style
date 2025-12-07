@@ -1,0 +1,80 @@
+:root {
+    --roxo1: #10002B;
+    --roxo2: #240046;
+    --roxo3: #3C096C;
+    --roxo4: #5A189A;
+    --roxo5: #7B2CBF;
+    --roxo6: #9D4EDD;
+    --roxo7: #C77DFF;
+    --roxo8: #E0AAFF;
+
+    --sombra-roxa: rgba(106, 0, 255, 0.5);
+
+    --branco: #FFFFFF;
+
+    --cinza1: #282828;
+}
+body {
+    height: 100vh;
+}
+
+/* Config header */
+.logo {
+    width: 200px;
+    height: auto;
+}
+.btn-modo-claro {
+    width: 25px;
+    height: auto;
+}
+a {
+    text-decoration: none;
+    color: var(--roxo4);
+}
+
+/* Config miolo */
+.miolo {
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 5px 5px 8px var(--sombra-roxa);
+}
+h1 {
+    color: var(--roxo3);
+    font-weight: bold;
+}
+form {
+    height: max-content;
+    width: 80%;
+}
+.input {
+    height: 42px;
+}
+.btn-enviar {
+    background-color: var(--roxo4);
+    color: var(--branco);
+    transition: background-color .3s ease-in;
+}
+.btn-voltar {
+    border-color: var(--roxo4);
+    color: var(--cinza1);
+    transition: border-color .3s ease-in;
+}
+
+/* Config hover e afins */
+a:hover {
+    text-decoration: underline;
+}
+.btn-enviar:hover {
+    background-color: var(--roxo5);
+    color: var(--branco);
+}
+.btn-voltar:hover {
+    border-color: var(--roxo5);
+    color: var(--cinza1);
+}
+
+/* Config footer */
+.footer {
+    background-color: var(--cinza1);
+    color: var(--branco);
+}

@@ -1,0 +1,110 @@
+:root {
+    --roxo1: #10002B;
+    --roxo2: #240046;
+    --roxo3: #3C096C;
+    --roxo4: #5A189A;
+    --roxo5: #7B2CBF;
+    --roxo6: #9D4EDD;
+    --roxo7: #C77DFF;
+    --roxo8: #E0AAFF;
+
+    --branco: #ffffff;
+
+    --cinza1: rgba(55, 55, 55, 0.5);
+    --cinza2: rgb(236, 236, 236);
+}
+
+/* Config body */
+body {
+    background-color: var(--cinza2);
+    height: 100vh;
+}
+
+/* Config header */
+.header {
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+    border-bottom: var(--roxo3) .3rem solid;
+    background-image: url(images/img-bg-header.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 50%;
+}
+.textos-header {
+    background-color: var(--cinza1);
+    width: 100%;
+    height: 100%;
+}
+.header h1 {
+    font-size: 60px;
+}
+
+/* Config miolo */
+.miolo {
+    background: linear-gradient(
+        30deg,
+        var(--roxo3),
+        var(--roxo5)
+    );
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: .5rem;
+    max-width: 85%;
+    width: 75%;
+}
+.introducao {
+    color: var(--branco);
+}
+.introducao p {
+    font-size: 20px;
+    text-align: justify;
+}
+.carousel-inner {
+    border-radius: .5rem;
+}
+.carousel-inner img {
+    max-height: 350px;
+    object-fit: cover;
+}
+.grupo-botoes {
+    color: var(--branco);
+}
+.btn-login {
+    background-color: var(--roxo7);
+    border-radius: .5rem;
+    height: 90px;
+    font-size: 30px;
+    margin: 0 auto;
+    text-decoration: none;
+    color: var(--branco);
+    transition: background-color 0.3s ease;
+}
+.btn-cadastro {
+    background-color: var(--roxo7);
+    border-radius: .5rem;
+    height: 90px;
+    font-size: 30px;
+    margin: 0 auto;
+    text-decoration: none;
+    color: var(--branco);
+    transition: background-color 0.3s ease;
+}
+.btn-login:hover {
+    text-decoration: underline;
+    background-color: var(--roxo6);
+}
+.btn-cadastro:hover {
+    text-decoration: underline;
+    background-color: var(--roxo6);
+}
+.texto {
+    width: 300px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Config footer */
+.footer {
+    background-color: var(--cinza1);
+    color: var(--branco);
+}

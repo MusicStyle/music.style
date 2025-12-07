@@ -1,384 +1,53 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | MusicStyle</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* ======================= */
-        /* === PALETA DE CORES === */
-        /* ======================= */
-        :root {
-            --cor-principal: #5A189A; /* Roxo/Fúcsia Principal */
-            --cor-secundaria: #E0BBE4; /* Lilás Claro */
-            --cor-texto: #333333;
-            --cor-sucesso: #198754; /* Verde Bootstrap Success */
-        }
-
-        body {
-            /* IMAGEM DE BACKGROUND */
-            background-image: url('https://trello.com/1/cards/68bede3c789254570e9c07d4/attachments/68fa481373cc4870000ff36a/download/background_login_musicstyle.png');
-            background-size: cover; 
-            background-position: center; 
-            background-attachment: fixed;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            color: var(--cor-texto);
-        }
-
-        .card-personalizado {
-            border: none;
-            border-radius: 1rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            background-color: white;
-            max-width: 450px; 
-            width: 100%;
-        }
-
-        /* Estilo para os botões e inputs */
-        .btn-principal {
-            background-color: var(--cor-principal);
-            border-color: var(--cor-principal);
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        .btn-principal:hover {
-            background-color: #9D4EDD;
-            border-color: #9D4EDD;
-            color: white;
-        }
-
-        .form-control:focus {
-            border-color: var(--cor-principal);
-            box-shadow: 0 0 0 0.25rem rgba(90, 24, 154, 0.25);
-        }
-        
-        a { color: var(--cor-principal); }
-        a:hover { color: #7A007A; }
-
-        /* =============================== */
-        /* === RESPONSIVIDADE E LAYOUT === */
-        /* =============================== */
-        .desktop-view { display: block !important; }
-        .mobile-view { display: none !important; }
-        
-        @media (min-width: 768px) {
-            .desktop-flex-container {
-                display: flex;
-                flex-direction: row; 
-                justify-content: center; 
-                gap: 30px; 
-            }
-        }
-        
-        @media (max-width: 767.98px) {
-            .desktop-view { display: none !important; }
-            .mobile-view { display: block !important; }
-            .container { padding: 15px; }
-        }
-
-        /* ================================================= */
-        /* === ESTILOS E ANIMAÇÃO DO TOAST (MODIFICADOS) === */
-        /* ================================================= */
-        .toast-container {
-            position: fixed;
-            bottom: 20px; 
-            right: 20px; 
-            z-index: 1080; 
-            /* Importante para a transição */
-            overflow: hidden; 
-        }
-
-        /* Estilo para o Toast de Erro (Vermelho) */
-        .toast-bg-danger {
-            background-color: #dc3545 !important;
-            color: white;
-            border: 1px solid #bb2d3b;
-        }
-        .toast-bg-danger .btn-close {
-            filter: invert(1);
-        }
-        
-        /* Estilo para o Toast de Sucesso (Verde) */
-        .toast-bg-success {
-            background-color: var(--cor-sucesso) !important;
-            color: white;
-            border: 1px solid #146c43;
-        }
-        .toast-bg-success .btn-close {
-            filter: invert(1);
-        }
-
-        /* 1. TOAST MAIOR */
-        .toast {
-            max-width: 350px; /* Aumenta um pouco o tamanho máximo */
-            width: 100%;
-        }
-
-        /* 2. ANIMAÇÃO SLIDE-IN (Slide da direita) */
-        /* O Bootstrap usa a classe .show para mostrar o toast */
-        .toast:not(.show) {
-            /* Move o toast para fora da tela (direita) quando não está visível */
-            transform: translateX(120%);
-            transition: transform 0.5s ease-out, opacity 0.3s ease; 
-        }
-        
-        .toast.show {
-            /* Traz o toast de volta para a posição (0) quando está visível */
-            transform: translateX(0);
-            transition: transform 0.5s ease-out;
-        }
-        /* Para garantir que a animação padrão do Bootstrap seja sobreposta */
-        .toast.showing {
-            opacity: 0;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>MusicStyle | Seu estilo, sua música</title>
 </head>
-<body>
-
-<div class="container my-5">
-    
-    <div class="desktop-view">
-        <h1 class="text-center mb-5" style="color: var(--cor-principal); text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">Bem-vindo ao MusicStyle!</h1>
-        
-        <div class="desktop-flex-container">
-            
-            <div class="card card-personalizado p-4 mb-4 mb-md-0">
-                <h3 class="card-title text-center mb-4" style="color: var(--cor-principal);">Login</h3>
-                <form id="formLoginDesktop">
-                    <div class="mb-3">
-                        <label for="loginEmail" class="form-label">E-mail</label>
-                        <input type="email" class="form-control" id="loginEmail" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="loginSenha" class="form-label">Senha</label>
-                        <input type="password" class="form-control" id="loginSenha" required>
-                    </div>
-                    <button type="submit" class="btn btn-principal w-100 mt-2">Entrar</button>
-                    <div class="text-center mt-3">
-                        <a href="#" class="text-decoration-none">Esqueceu a senha?</a>
-                    </div>
-                </form>
-            </div>
-            
-            <div class="card card-personalizado p-4">
-                <h3 class="card-title text-center mb-4" style="color: var(--cor-principal);">Cadastro</h3>
-                <form id="formCadastroDesktop"> 
-                    <div class="mb-3">
-                        <label for="cadastroNome" class="form-label">Nome Completo</label>
-                        <input type="text" class="form-control" id="cadastroNome" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="cadastroEmail" class="form-label">E-mail</label>
-                        <input type="email" class="form-control" id="cadastroEmail" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="cadastroSenha" class="form-label">Senha</label>
-                        <input type="password" class="form-control" id="cadastroSenha" required>
-                        <div class="form-text">Mínimo 8 caracteres.</div>
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="termosDesktop" required>
-                        <label class="form-check-label" for="termosDesktop">Aceito os <a href="#">Termos de Uso</a></label>
-                    </div>
-                    <button type="submit" class="btn btn-principal w-100 mt-2">Cadastrar</button>
-                </form>
-            </div>
-        
+<body class="d-flex flex-column align-items-center">
+    <header class="header w-100 d-flex flex-column justify-content-center align-items-center">
+        <div class="textos-header text-white d-flex flex-column justify-content-center align-items-center p-0">
+            <h1 class="mb-0">MusicStyle</h1>
+            <h2 class="mb-0">Seu estilo, sua música</h2>
         </div>
-    </div>
-    
-    <div class="mobile-view text-center">
-        <h1 class="mb-5" style="color: var(--cor-principal);">Seja Bem-vindo(a)!</h1>
-        
-        <button type="button" class="btn btn-principal btn-lg w-75 mb-3" data-bs-toggle="modal" data-bs-target="#loginModal">
-            Fazer Login
-        </button>
-        
-        <button type="button" class="btn btn-outline-secondary btn-lg w-75" style="border-color: var(--cor-principal); color: var(--cor-principal);" data-bs-toggle="modal" data-bs-target="#cadastroModal">
-            Criar Conta
-        </button>
-    </div>
-
-</div>
-
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content card-personalizado">
-            <div class="modal-header border-0">
-                <h5 class="modal-title" id="loginModalLabel" style="color: var(--cor-principal);">Login</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="formLoginMobile">
-                    <div class="mb-3">
-                        <label for="m_loginEmail" class="form-label">E-mail</label>
-                        <input type="email" class="form-control" id="m_loginEmail" required>
+    </header>
+        <main class="miolo d-flex flex-column justify-content-center align-items-center p-4 my-5 gap-2">
+        <section class="introducao">
+            <h2 class="mb-4 text-center">Descubra músicas que combinam com o seu estilo!</h2>
+            <p class="mb-3">No MusicStyle, acreditamos que a música é uma extensão da sua personalidade. Explore nossa seleção de músicas cuidadosamente escolhidas para refletir diferentes estilos e humores. Seja você um amante do rock, pop, jazz ou música clássica, temos algo especial para você.</p>
+            <p class="mb-3">Navegue pelas nossas playlists temáticas, descubra novos artistas e deixe a música transformar o seu dia. Seu estilo é único, e a música que você escolhe deve ser também.</p>
+            <p class="mb-0">Junte-se a nós no MusicStyle e encontre a trilha sonora perfeita para cada momento da sua vida!</p>
+        </section>
+        <div class="carrossel w-100">
+            <div id="carrossel-musicas" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2500">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="images/img-carrossel-1.jpg" class="d-block w-100" alt="Imagem 1">
                     </div>
-                    <div class="mb-3">
-                        <label for="m_loginSenha" class="form-label">Senha</label>
-                        <input type="password" class="form-control" id="m_loginSenha" required>
+                    <div class="carousel-item">
+                        <img src="images/img-carrossel-2.jpg" class="d-block w-100" alt="Imagem 2">
                     </div>
-                    <button type="submit" class="btn btn-principal w-100 mt-2">Entrar</button>
-                    <div class="text-center mt-3">
-                        <a href="#" class="text-decoration-none">Esqueceu a senha?</a>
+                    <div class="carousel-item">
+                        <img src="images/img-carrossel-3.jpg" class="d-block w-100" alt="Imagem 3">
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-
-<div class="modal fade" id="cadastroModal" tabindex="-1" aria-labelledby="cadastroModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content card-personalizado">
-            <div class="modal-header border-0">
-                <h5 class="modal-title" id="cadastroModalLabel" style="color: var(--cor-principal);">Cadastro</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="formCadastroMobile"> 
-                    <div class="mb-3">
-                        <label for="m_cadastroNome" class="form-label">Nome Completo</label>
-                        <input type="text" class="form-control" id="m_cadastroNome" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="m_cadastroEmail" class="form-label">E-mail</label>
-                        <input type="email" class="form-control" id="m_cadastroEmail" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="m_cadastroSenha" class="form-label">Senha</label>
-                        <input type="password" class="form-control" id="m_cadastroSenha" required>
-                        <div class="form-text">Mínimo 8 caracteres.</div>
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="termosMobile" required>
-                        <label class="form-check-label" for="termosMobile">Aceito os <a href="#">Termos de Uso</a></label>
-                    </div>
-                    <button type="submit" class="btn btn-principal w-100 mt-2">Cadastrar</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="toast-container">
-    <div id="passwordToast" class="toast align-items-center toast-bg-danger border-0 mb-2" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body">
-                ⚠️ **Erro na Senha:** A senha deve ter no mínimo 8 caracteres.
-            </div>
-            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-    </div>
-    
-    <div id="successToast" class="toast align-items-center toast-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body">
-                🎉 **Sucesso!** Cadastro realizado. Faça login para continuar.
-            </div>
-            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-    </div>
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        
-        // 1. INICIALIZAÇÃO DOS TOASTS
-        const passwordToastElement = document.getElementById('passwordToast');
-        const successToastElement = document.getElementById('successToast');
-
-        // Instancia o objeto Toast de ERRO (Senha)
-        const passwordToast = passwordToastElement ? new bootstrap.Toast(passwordToastElement, {
-            autohide: true, 
-            delay: 5000 
-        }) : null;
-        
-        // Instancia o objeto Toast de SUCESSO (Cadastro)
-        const successToast = successToastElement ? new bootstrap.Toast(successToastElement, {
-            autohide: true, 
-            delay: 6000 
-        }) : null;
-
-        // 2. FUNÇÃO DE VALIDAÇÃO DE SENHA
-        function validarSenhaCadastro(event, senhaId) {
-            const senhaInput = document.getElementById(senhaId);
-            const senha = senhaInput ? senhaInput.value : '';
-
-            // Se a senha tiver menos de 8 caracteres
-            if (senha.length < 8) {
-                event.preventDefault(); // Impede o envio
-                
-                // MOSTRA O TOAST DE ERRO
-                if (passwordToast) {
-                    passwordToast.show(); 
-                }
-                
-                if (senhaInput) {
-                    senhaInput.focus();
-                }
-                
-                return false;
-            } 
-            return true; 
-        }
-        
-        // 3. FUNÇÃO DE SUCESSO DE CADASTRO
-        function handleCadastroSuccess(event, senhaId) {
-            // 1. VALIDA A SENHA ANTES DE TUDO
-            if (!validarSenhaCadastro(event, senhaId)) {
-                return; // Se falhar na senha, interrompe.
-            }
-
-            event.preventDefault(); // Para simular o processamento e evitar o recarregamento da página
-
-            // ** Aqui você colocaria sua lógica real de envio de dados (fetch/AJAX) **
-            
-            // 2. SIMULAÇÃO DE SUCESSO
-            // MOSTRA O TOAST DE SUCESSO
-            if (successToast) {
-                successToast.show();
-            }
-            
-            // Limpa o formulário após o "sucesso"
-            event.target.reset();
-
-            // Fecha o modal se for o caso (apenas para mobile)
-            if (event.target.id === 'formCadastroMobile') {
-                const modal = bootstrap.Modal.getInstance(document.getElementById('cadastroModal'));
-                if (modal) {
-                    modal.hide();
-                }
-            }
-        }
-
-        // 4. CONFIGURAÇÃO DOS EVENT LISTENERS
-
-        // Formulário de Cadastro Desktop
-        const formDesktop = document.getElementById('formCadastroDesktop');
-        if (formDesktop) { 
-            formDesktop.addEventListener('submit', function(event) {
-                handleCadastroSuccess(event, 'cadastroSenha');
-            });
-        }
-
-        // Formulário de Cadastro Mobile
-        const formMobile = document.getElementById('formCadastroMobile');
-        if (formMobile) { 
-            formMobile.addEventListener('submit', function(event) {
-                handleCadastroSuccess(event, 'm_cadastroSenha');
-            });
-        }
-    });
-</script>
+        <section class="grupo-botoes d-flex justify-content-between align-items-center my-5 px-5 gap-3">
+            <a href="./login/index.html" class="btn-login d-flex justify-content-center align-items-center p-3">
+                <div class="texto">Login</div>
+            </a>
+            <a href="./cadastro/index.html" class="btn-cadastro d-flex justify-content-center align-items-center p-3">
+                <div class="texto">Cadastro</div>
+            </a>
+        </section>
+    </main>
+    <footer class="footer d-flex justify-content-center align-items-center py-4 w-100">
+        <p>MusicStyle &copy; 2025 | Todos os direitos reservados.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
